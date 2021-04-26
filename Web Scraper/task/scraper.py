@@ -1,14 +1,13 @@
 import requests
+from bs4 import BeautifulSoup
 
-url = input()
+data = {}
+
+url = 'https://www.nature.com/nature/articles'
 r = requests.get(url)
 status_code = r.status_code
+soup = BeautifulSoup(r.content, 'html.parser')
+all_headers = soup.find_all('h3')
+for header in all_headers:
+    print(f"{header.a.string} - https://www.nature.com/nature{header.a['href']}")
 
-if status_code != 200:
-    print(f'The URL returned {status_code}')
-else:
-    page_content = r.content
-    file = open('source.html', 'wb')
-    file.write(page_content)
-    file.close()
-    print("Content saved")
