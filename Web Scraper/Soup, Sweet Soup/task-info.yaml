@@ -7,15 +7,12 @@ files:
   visible: false
   text: |
     import glob
-    import os
     import random
     import re
     import shutil
     import string
 
-    from hstest.check_result import CheckResult
-    from hstest.stage_test import StageTest
-    from hstest.test_case import TestCase
+    from hstest import *
 
     import requests
     from furl import furl
@@ -38,7 +35,11 @@ files:
 
         def get_article_links_of_type(self, url, article_type="News"):
             origin_url = furl(url).origin
-            articles_resp = requests.get(url)
+            try:
+                articles_resp = requests.get(url)
+            except requests.exceptions.ConnectionError:
+                raise WrongAnswer(f"ConnectionError occurred when tests tried to reach the page \'{url}\'.\n"
+                                  f"Please try running tests again.")
             soup = BeautifulSoup(articles_resp.text, "html.parser")
             articles = soup.find_all(self.tag_containing_atricle_type)
             articles = list(filter(lambda x: x.text.strip() == article_type, articles))

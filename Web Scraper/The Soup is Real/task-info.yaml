@@ -58,7 +58,10 @@ files:
         def generate(self):
             txt_files = glob.glob("*.txt")
             for filename in txt_files:
-                os.remove(filename)
+                try:
+                    os.remove(filename)
+                except FileNotFoundError:
+                    pass
             return [TestCase(time_limit=0)]
 
         def check(self, reply, attach=None):
