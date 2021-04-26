@@ -9,5 +9,5 @@ status_code = r.status_code
 soup = BeautifulSoup(r.content, 'html.parser')
 all_headers = soup.find_all('h3')
 for header in all_headers:
-    print(f"{header.a.string} - https://www.nature.com/nature{header.a['href']}")
+    print(f"{header.a.string} - https://www.nature.com{header.a['href']}")
 
