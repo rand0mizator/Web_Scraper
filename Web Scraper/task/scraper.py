@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from string import punctuation
 
 
 def get_page_content(url):
@@ -20,40 +21,37 @@ def get_article_title(page):
     print("Getting article title...")
     title = parsed.title.string
     if title:
-        print(f"Done!\nTitle: {title}\n")
+        print("Done!")
         return title
     else:
         print(f"Something went wrong, title = {title}")
         return False
 
 
-def get_article_text(page_content):
+def get_article_text(page):
     """get article text"""
-    soup = BeautifulSoup(page_content, 'html.parser')
+    parsed = BeautifulSoup(page, 'html.parser')
     print("Getting article text...")
-    # text = (soup.find(attrs={'class': 'article-item__teaser-text'}).string).strip()
-    text = soup.find(class_="article-item__body")
-    for row in text.find_all('p'):
-        print(row.string)
+    text = parsed.find(class_="article__body cleared")
+    print("Done!")
+    return text.get_text(strip=True)
 
 
-    # if text:
-    #     print(f"Done!\nArticle text: {text}\n")
-    #     return text
-    # else:
-    #     print(f"Something went wrong, text = {text}")
-    #     return False
 
 def prepare_text(article_text):
     """strip all trailing whitespaces in article text"""
     pass
 
 
-def prepare_file_name(article_title):
+def prepare_file_name(title):
     """Replace the whitespaces with underscores and remove punctuation marks in the filename
     (str.maketrans and string.punctuation will be useful for this). Also, strip all trailing whitespaces
      in the article title"""
-    pass
+    stripped_title = str(title).strip()
+    none_string = punctuation + '‘’'
+    mytable = stripped_title.maketrans(' ', '_', none_string)
+    return stripped_title.translate(mytable)
+
 
 
 def save_file(article_title, article_text):
@@ -62,7 +60,7 @@ def save_file(article_title, article_text):
 
 
 urls = []
-starting_url = 'https://www.nature.com/nature/articles'
+starting_url = 'https://www.nature.com/nature/articles?type=news'
 r = get_page_content(starting_url)
 soup = BeautifulSoup(r, 'html.parser')
 all_headers = soup.find_all(attrs={'data-track-action': 'view article'})
@@ -71,10 +69,14 @@ for header in all_headers:
     urls.append(f"https://www.nature.com{header.get('href')}")
 # print(urls)
 
-for url in urls[:1]:
+for url in urls:
     page_content = get_page_content(url)
     article_title = get_article_title(page_content)
+    print(article_title)
     article_text = get_article_text(page_content)
+    print(article_text)
+    file_name = prepare_file_name(article_title)
+    print(file_name)
 
 
 
