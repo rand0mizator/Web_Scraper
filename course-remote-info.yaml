@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/455321/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Fri, 30 Apr 2021 00:38:37 UTC
+update_date: Sun, 23 May 2021 13:43:27 UTC
 stages:
 - id: 781
   step: 11755
@@ -19,11 +19,9 @@ stages:
   is_completed: true
 - id: 785
   step: 11759
-  is_completed: false
+  is_completed: true
 topics:
   0:
-  - title: Introduction to operating systems
-    theory_id: 9704
   - title: World Wide Web
     theory_id: 6633
   - title: HyperText Transfer Protocol
@@ -32,6 +30,8 @@ topics:
     theory_id: 6740
   - title: HTTP messages
     theory_id: 6752
+  - title: Introduction to operating systems
+    theory_id: 9704
   - title: Introduction to Python
     theory_id: 5204
   - title: Overview of the basic program

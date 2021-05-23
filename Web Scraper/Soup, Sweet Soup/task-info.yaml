@@ -119,6 +119,36 @@ files:
     if __name__ == '__main__':
         WebScraperTest().run_tests()
   learner_created: false
+- name: Page_1/Scientists_zero_in_on_longsought_marker_of_COVIDvaccine_efficacy.txt
+  visible: true
+  learner_created: true
+- name: Page_1/Controversial_forestry_experiment_will_be_largestever_in_United_States.txt
+  visible: true
+  learner_created: true
+- name: Page_1/China’s_Mars_rover_returns_first_images_—_scientists_say_the_view_is_promising.txt
+  visible: true
+  learner_created: true
+- name: Page_1/‘It’s_a_minefield’_COVID_vaccine_safety_poses_unique_communication_challenge.txt
+  visible: true
+  learner_created: true
+- name: Page_1/Prestigious_European_grants_might_be_biased_study_suggests.txt
+  visible: true
+  learner_created: true
+- name: Page_1/Frosty_reception_for_algorithm_that_predicts_research_papers_impact.txt
+  visible: true
+  learner_created: true
+- name: Page_1/Microbes_teach_a_master_class_in_how_to_clean_polluted_water__Research_Highlights.txt
+  visible: true
+  learner_created: true
+- name: Page_1/Our_radical_changes_to_Earth’s_greenery_began_long_ago_—_with_farms_not_factories__Research_Highlights.txt
+  visible: true
+  learner_created: true
+- name: Page_1/Why_national_attitudes_about_science_matter_for_vaccine_acceptance__Research_Highlights.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/145/stages/785/implement#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sun, 23 May 2021 15:04:27 UTC
+record: 2
